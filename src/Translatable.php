@@ -2,6 +2,7 @@
 
 namespace MrMonat\Translatable;
 
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Field;
 
 class Translatable extends Field
@@ -44,7 +45,38 @@ class Translatable extends Field
      */
     protected function resolveAttribute($resource, $attribute)
     {
-        return $resource->getTranslations($attribute);
+        $results = [];
+        if ( class_exists('\Spatie\Translatable\TranslatableServiceProvider') ) {
+            $results = $resource->getTranslations($attribute);
+        } elseif ( class_exists('\Dimsav\Translatable\TranslatableServiceProvider') ) {
+            $translations = $resource->translations()
+                ->get(['locale', $attribute])
+                ->toArray();
+            foreach ( $translations as $translation ) {
+                $results[$translation['locale']] = $translation[$attribute];
+            }
+        }
+        return $results;
+    }
+
+    /**
+     * Hydrate the given attribute on the model based on the incoming request.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  string  $requestAttribute
+     * @param  object  $model
+     * @param  string  $attribute
+     * @return void
+     */
+    protected function fillAttributeFromRequest(NovaRequest $request, $requestAttribute, $model, $attribute)
+    {
+        if ( class_exists('\Spatie\Translatable\TranslatableServiceProvider') ) {
+            parent::fillAttributeFromRequest($request, $requestAttribute, $model, $attribute);
+        } elseif ( class_exists('\Dimsav\Translatable\TranslatableServiceProvider') ) {
+            foreach ( $request[$requestAttribute] as $lang => $value ) {
+                $model->translateOrNew($lang)->{$attribute} = $value;
+            }
+        }
     }
 
     /**
