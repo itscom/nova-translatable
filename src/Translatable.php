@@ -73,9 +73,11 @@ class Translatable extends Field
         if ( class_exists('\Spatie\Translatable\TranslatableServiceProvider') ) {
             parent::fillAttributeFromRequest($request, $requestAttribute, $model, $attribute);
         } elseif ( class_exists('\Dimsav\Translatable\TranslatableServiceProvider') ) {
-            foreach ( $request[$requestAttribute] as $lang => $value ) {
-                $model->translateOrNew($lang)->{$attribute} = $value;
-            }
+            if ( is_array($request[$requestAttribute]) ) {
+                foreach ( $request[$requestAttribute] as $lang => $value ) {
+                    $model->translateOrNew($lang)->{$attribute} = $value;
+                }
+	    }
         }
     }
 
