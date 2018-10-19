@@ -1,6 +1,6 @@
 # Nova Translatable Field
 
-This package is based on [mrmonat/nova-translatable](https://github.com/mrmonat/nova-translatable) and on [yeswedev/nova-translatable.](hhttps://framagit.org/yeswedev/ywd_nova-translatable).
+This package is based on [mrmonat/nova-translatable](https://github.com/mrmonat/nova-translatable) and on [yeswedev/nova-translatable](https://framagit.org/yeswedev/ywd_nova-translatable) .
 
 Adds the ability to show and edit translated fields created with [dimsav/laravel-translatable](https://github.com/dimsav/laravel-translatable) package.
 
