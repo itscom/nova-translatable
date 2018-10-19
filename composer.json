@@ -1,5 +1,5 @@
 {
-    "name": "yeswedev/nova-translatable",
+    "name": "itsimplycom/nova-translatable",
     "description": "A Laravel Nova field for dimsav/laravel-translatable.",
     "keywords": [
         "laravel",
