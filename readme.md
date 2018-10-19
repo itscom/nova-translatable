@@ -1,7 +1,6 @@
 # Nova Translatable Field
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/yeswedev/nova-translatable.svg?style=flat-square)](https://packagist.org/packages/yeswedev/nova-translatable)
 
-This package is based on [mrmonat/nova-translatable](https://github.com/mrmonat/nova-translatable).
+This package is based on [mrmonat/nova-translatable](https://github.com/mrmonat/nova-translatable) and on [yeswedev/nova-translatable.](hhttps://framagit.org/yeswedev/ywd_nova-translatable).
 
 Adds the ability to show and edit translated fields created with [dimsav/laravel-translatable](https://github.com/dimsav/laravel-translatable) package.
 
