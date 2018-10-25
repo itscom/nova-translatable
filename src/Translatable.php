@@ -1,6 +1,6 @@
 <?php
 
-namespace YesWeDev\Nova\Translatable;
+namespace Its\Nova\Translatable;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Field;

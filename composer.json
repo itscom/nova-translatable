@@ -13,13 +13,13 @@
     },
     "autoload": {
         "psr-4": {
-            "YesWeDev\\Nova\\Translatable\\": "src"
+            "Its\\Nova\\Translatable\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "YesWeDev\\Nova\\Translatable\\FieldServiceProvider"
+                "Its\\Nova\\Translatable\\FieldServiceProvider"
             ]
         }
     },

@@ -22,7 +22,7 @@ composer require yeswedev/nova-translatable
 You can add the field follows:
 
 ``` php
-use YesWeDev\Nova\Translatable\Translatable;
+use Its\Nova\Translatable\Translatable;
 
 Translatable::make('Description'),
 ```
