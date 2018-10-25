@@ -7,6 +7,12 @@
         "translatable"
     ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Angelo Alfano",
+            "email": "angeloalfano@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=7.1.0",
         "dimsav/laravel-translatable": "^9.0"
