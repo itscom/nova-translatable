@@ -108,7 +108,6 @@
             },
 
             changeTab(locale, dontEmit) {
-                console.log(locale);
                 if (this.currentLocale !== locale) {
                     if (!dontEmit) {
                         EventBus.$emit('localeChanged', locale);
