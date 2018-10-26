@@ -1,4 +1,10 @@
 # Nova Translatable Field
+[![Latest Stable Version](https://poser.pugx.org/itsimplycom/nova-translatable/v/stable)](https://packagist.org/packages/itsimplycom/nova-translatable)
+[![Total Downloads](https://poser.pugx.org/itsimplycom/nova-translatable/downloads)](https://packagist.org/packages/itsimplycom/nova-translatable)
+[![Latest Unstable Version](https://poser.pugx.org/itsimplycom/nova-translatable/v/unstable)](https://packagist.org/packages/itsimplycom/nova-translatable)
+[![License](https://poser.pugx.org/itsimplycom/nova-translatable/license)](https://packagist.org/packages/itsimplycom/nova-translatable)
+[![composer.lock](https://poser.pugx.org/itsimplycom/nova-translatable/composerlock)](https://packagist.org/packages/itsimplycom/nova-translatable)
+[![StyleCI](https://github.styleci.io/repos/153780194/shield?branch=develop)](https://github.styleci.io/repos/153780194)
 
 This package is based on [mrmonat/nova-translatable](https://github.com/mrmonat/nova-translatable) and on [yeswedev/nova-translatable](https://framagit.org/yeswedev/ywd_nova-translatable) .
 
