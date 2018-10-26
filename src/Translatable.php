@@ -2,8 +2,8 @@
 
 namespace Its\Nova\Translatable;
 
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Translatable extends Field
 {
@@ -17,9 +17,10 @@ class Translatable extends Field
     /**
      * Create a new field.
      *
-     * @param  string  $name
-     * @param  string|null  $attribute
-     * @param  mixed|null  $resolveCallback
+     * @param string      $name
+     * @param string|null $attribute
+     * @param mixed|null  $resolveCallback
+     *
      * @return void
      */
     public function __construct($name, $attribute = null, $resolveCallback = null)
@@ -31,60 +32,64 @@ class Translatable extends Field
         }, config('translatable.locales'));
 
         $this->withMeta([
-            'locales' => $locales,
-            'indexLocale' => app()->getLocale()
+            'locales'     => $locales,
+            'indexLocale' => app()->getLocale(),
         ]);
     }
 
     /**
      * Resolve the given attribute from the given resource.
      *
-     * @param  mixed  $resource
-     * @param  string  $attribute
+     * @param mixed  $resource
+     * @param string $attribute
+     *
      * @return mixed
      */
     protected function resolveAttribute($resource, $attribute)
     {
         $results = [];
-        if ( class_exists('\Spatie\Translatable\TranslatableServiceProvider') ) {
+        if (class_exists('\Spatie\Translatable\TranslatableServiceProvider')) {
             $results = $resource->getTranslations($attribute);
-        } elseif ( class_exists('\Dimsav\Translatable\TranslatableServiceProvider') ) {
+        } elseif (class_exists('\Dimsav\Translatable\TranslatableServiceProvider')) {
             $translations = $resource->translations()
                 ->get(['locale', $attribute])
                 ->toArray();
-            foreach ( $translations as $translation ) {
+            foreach ($translations as $translation) {
                 $results[$translation['locale']] = $translation[$attribute];
             }
         }
+
         return $results;
     }
 
     /**
      * Hydrate the given attribute on the model based on the incoming request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  string  $requestAttribute
-     * @param  object  $model
-     * @param  string  $attribute
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param string                                  $requestAttribute
+     * @param object                                  $model
+     * @param string                                  $attribute
+     *
      * @return void
      */
     protected function fillAttributeFromRequest(NovaRequest $request, $requestAttribute, $model, $attribute)
     {
-        if ( class_exists('\Spatie\Translatable\TranslatableServiceProvider') ) {
+        if (class_exists('\Spatie\Translatable\TranslatableServiceProvider')) {
             parent::fillAttributeFromRequest($request, $requestAttribute, $model, $attribute);
-        } elseif ( class_exists('\Dimsav\Translatable\TranslatableServiceProvider') ) {
-            if ( is_array($request[$requestAttribute]) ) {
-                foreach ( $request[$requestAttribute] as $lang => $value ) {
+        } elseif (class_exists('\Dimsav\Translatable\TranslatableServiceProvider')) {
+            if (is_array($request[$requestAttribute])) {
+                foreach ($request[$requestAttribute] as $lang => $value) {
                     $model->translateOrNew($lang)->{$attribute} = $value;
                 }
-	    }
+            }
         }
     }
 
     /**
      * Set the locales to display / edit.
      *
-     * @param  array  $locales
+     * @param array $locales
+     *
      * @return $this
      */
     public function locales(array $locales)
@@ -95,7 +100,8 @@ class Translatable extends Field
     /**
      * Set the locale to display on index.
      *
-     * @param  string $locale
+     * @param string $locale
+     *
      * @return $this
      */
     public function indexLocale($locale)
